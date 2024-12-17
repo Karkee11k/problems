@@ -4,9 +4,16 @@ import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * The class {@code Solution} is a container of leetcode solution, you can find solutions for many problems.
+ *
+ * @author Karthikeyan T
+ */
 public class Solution {
 
-    // https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements
+    /**
+     * <a href="https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements">findScore</a>
+     */
     public long findScore(int[] nums) {
         boolean[] markedElts = new boolean[nums.length];
         int markedCount = 0;
@@ -39,7 +46,9 @@ public class Solution {
         return result;
     }
 
-    // https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i
+    /**
+     * <a href="https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i">finalState</a>
+     */
     public int[] getFinalState(int[] nums, int k, int multiplier) {
         PriorityQueue<int[]> q = IntStream.range(0, nums.length).mapToObj(index -> new int[]{nums[index], index})
                 .collect(Collectors.toCollection(() -> new PriorityQueue<>((a, b) -> {
