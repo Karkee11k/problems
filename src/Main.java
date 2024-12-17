@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 /**
- * Class to call solutions. Create a static method for run your solution
+ * Class to call solutions. Create a static method to run your solution
  */
 public class Main {
     private static final Solution solution = new Solution();
