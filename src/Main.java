@@ -63,7 +63,7 @@ public class Main {
     }
 
     // same as the `printAns` but works for array, don't have to call it directly
-    static void printArray(Object ans, Function<Object, String> formatter) {
+    private static void printArray(Object ans, Function<Object, String> formatter) {
         StringBuilder builder = new StringBuilder("[");
         for (int i = 0, n = Array.getLength(ans); i < n; i++) {
             builder.append(formatter.apply(Array.get(ans, i))).append(", ");
