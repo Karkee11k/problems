@@ -51,7 +51,7 @@ public class Main {
     /**
      * Prints the given answer in the console.
      * @param ans answer to be printed
-     * @param formatter formatted to format how the answer to be printed
+     * @param formatter formatter to format how the answer to be printed
      */
     static void printAns(Object ans, Function<Object, String> formatter) {
         if (ans.getClass().isArray()) {
