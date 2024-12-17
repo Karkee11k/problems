@@ -20,11 +20,11 @@ public class Main {
         return builder.delete(builder.length() - 2, builder.length()).append("]").toString();
     };
 
-
     // main function, here you can try solutions
     public static void main(String[] args) throws Exception {
         solveGetFinalState();
         solveFindScore();
+        solveTwoSum();
     }
 
     static void solveGetFinalState() {
@@ -38,6 +38,12 @@ public class Main {
         String input = Files.readString(Paths.get("inputs/find_score_input.txt"));
         int[] nums = Arrays.stream(input.substring(1, input.length() - 1).split(",")).mapToInt(Integer::parseInt).toArray();
         printAns(solution.findScore(nums));
+    }
+
+    static void solveTwoSum() {
+        int[] nums = {2,7,11,15};
+        int target = 9;
+        printAns(solution.twoSum(nums, target));
     }
 
     /**
