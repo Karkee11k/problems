@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 /**
- * Class to call solutions. Create a static method for run your solution
+ * Class to call solutions. Create a static method to run your solution
  */
 public class Main {
     private static final Solution solution = new Solution();
@@ -51,7 +51,7 @@ public class Main {
     /**
      * Prints the given answer in the console.
      * @param ans answer to be printed
-     * @param formatter formatted to format how the answer to be printed
+     * @param formatter formatter to format how the answer to be printed
      */
     static void printAns(Object ans, Function<Object, String> formatter) {
         if (ans.getClass().isArray()) {
