@@ -1,6 +1,10 @@
+import common.problem.solving.util.TreeConstructor;
+import common.problem.solving.util.TreeNode;
 import common.problem.solving.util.Utils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class to call solutions. Create a static method to run your solution.
@@ -13,6 +17,16 @@ public class Main {
         solveGetFinalState();
         solveFindScore();
         solveTwoSum();
+        solveFlattenTree();
+    }
+
+    static void solveFlattenTree() {
+        Integer[] nums = {1, 2, 5, 3, 4, null, 6};
+        TreeNode root = TreeConstructor.construct(nums, TreeConstructor.Order.LEVEL_ORDER);
+        solution.flatten(root);
+        List<TreeNode> nodes = new ArrayList<>();
+        TreeConstructor.addTreeNodes(root, nodes);
+        Utils.printAns(nodes);
     }
 
     static void solveGetFinalState() {
