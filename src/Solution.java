@@ -1,3 +1,5 @@
+import common.problem.solving.util.TreeNode;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -13,7 +15,9 @@ import java.util.stream.IntStream;
 public class Solution {
 
     /**
-     * <a href="https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements">findScore</a>
+     * <a href="https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements">
+     *   2593. Find Score of an Array After Marking All Elements
+     * </a>
      */
     public long findScore(int[] nums) {
         boolean[] markedElts = new boolean[nums.length];
@@ -48,7 +52,9 @@ public class Solution {
     }
 
     /**
-     * <a href="https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i">finalState</a>
+     * <a href="https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i">
+     *  3264. Final Array State After K Multiplication Operations I
+     * </a>
      */
     public int[] getFinalState(int[] nums, int k, int multiplier) {
         PriorityQueue<int[]> q = IntStream.range(0, nums.length).mapToObj(index -> new int[]{nums[index], index})
@@ -71,7 +77,9 @@ public class Solution {
     }
 
     /**
-     *<a href="https://leetcode.com/problems/two-sum/">twoSum</a>
+     * <a href="https://leetcode.com/problems/two-sum/">
+     *  1. Two Sum
+     * </a>
      */
      public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> index = new HashMap<>();
@@ -82,5 +90,29 @@ public class Solution {
             index.put(nums[i], i);
         }
         return null;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/">
+     *  114. Flatten Binary Tree to Linked List
+     * </a>
+     */
+    public void flatten(TreeNode root) {
+         getFlatten(root);
+    }
+
+    // actual function solves the problem
+    private TreeNode getFlatten(TreeNode root) {
+         if (root == null) {
+             return null;
+         }
+         TreeNode x = getFlatten(root.left);
+         TreeNode y = getFlatten(root.right);
+         if (x != null) {
+             x.right = root.right;
+             root.right = root.left;
+         }
+         root.left = null;
+         return y == null ? x == null ? root : x : y;
     }
 }
