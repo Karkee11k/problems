@@ -1,9 +1,6 @@
 import common.problem.solving.util.TreeNode;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -68,8 +65,7 @@ public class Solution {
         while (k-- > 0) {
             int[] min = q.poll();
             if (min != null) {
-                min[0] *= multiplier;
-                nums[min[1]] *= multiplier;
+                nums[min[1]] = min[0] *= multiplier;
                 q.add(min);
             }
         }
@@ -114,5 +110,21 @@ public class Solution {
          }
          root.left = null;
          return y == null ? x == null ? root : x : y;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/group-anagrams/">49. Group Anagrams</a>
+     */
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> result = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String str1 = new String(chars);
+            List<String> ls = result.getOrDefault(str1, new ArrayList<>());
+            ls.add(str);
+            result.put(str1, ls);
+        }
+        return new ArrayList<>(result.values());
     }
 }

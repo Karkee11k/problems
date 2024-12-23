@@ -18,6 +18,7 @@ public class Main {
         solveFindScore();
         solveTwoSum();
         solveFlattenTree();
+        solveGroupAnagrams();
     }
 
     static void solveFlattenTree() {
@@ -45,5 +46,10 @@ public class Main {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         Utils.printAns(solution.twoSum(nums, target));
+    }
+
+    static void solveGroupAnagrams() {
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        Utils.printAns(solution.groupAnagrams(strs));
     }
 }
