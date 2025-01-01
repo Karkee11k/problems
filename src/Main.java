@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to call solutions. Create a static method to run your solution.
+ * Entry point to test solutions. Add a static method to implement your solution
+ * and call it from main. Each method should be self-contained for modular testing.
  */
 public class Main {
     private static final Solution solution = new Solution();
@@ -19,6 +20,7 @@ public class Main {
         solveTwoSum();
         solveFlattenTree();
         solveGroupAnagrams();
+        solveMaxScore();
     }
 
     static void solveFlattenTree() {
@@ -51,5 +53,9 @@ public class Main {
     static void solveGroupAnagrams() {
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
         Utils.printAns(solution.groupAnagrams(strs));
+    }
+
+    static void solveMaxScore() {
+        Utils.printAns(solution.maxScore("011101"));
     }
 }

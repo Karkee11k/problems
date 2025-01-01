@@ -79,7 +79,7 @@ public class Solution {
      */
      public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> index = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; ++i) {
             if (index.containsKey(target - nums[i])){
                 return new int[]{index.get(target - nums[i]), i};
             }
@@ -126,5 +126,28 @@ public class Solution {
             result.put(str1, ls);
         }
         return new ArrayList<>(result.values());
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/?envType=daily-question&envId=2025-01-01">
+     *  1422. Maximum Score After Splitting a String
+     * </a>
+     */
+    public int maxScore(String s) {
+        int ones = (int) s.chars().filter(c -> c == 49).count();
+        if (ones == 0) {
+            return s.length() - 1;
+        }
+        int zeroes = 0, score = 0;
+        for (int i = 0; i < s.length() - 1; ++i) {
+            if (s.charAt(i) == '1') {
+                --ones;
+            }
+            else {
+                ++zeroes;
+            }
+            score = Math.max(ones + zeroes, score);
+        }
+        return score;
     }
 }
