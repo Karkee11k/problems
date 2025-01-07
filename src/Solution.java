@@ -129,15 +129,16 @@ public class Solution {
     }
 
     /**
-     * <a href="https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/?envType=daily-question&envId=2025-01-01">
+     * <a href="https://leetcode.com/problems/maximum-score-after-splitting-a-string/">
      *  1422. Maximum Score After Splitting a String
      * </a>
      */
     public int maxScore(String s) {
-        int ones = (int) s.chars().filter(c -> c == 49).count();
+        int ones = (int) s.chars().filter(c -> c == '1').count();
         if (ones == 0) {
             return s.length() - 1;
         }
+
         int zeroes = 0, score = 0;
         for (int i = 0; i < s.length() - 1; ++i) {
             if (s.charAt(i) == '1') {
@@ -149,5 +150,19 @@ public class Solution {
             score = Math.max(ones + zeroes, score);
         }
         return score;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/string-matching-in-an-array/">1408. String Matching in an Array</a>
+     */
+    public List<String> stringMatching(String[] words) {
+        return Arrays.stream(words).filter(word -> {
+            for (String s : words) {
+                if (s.length() != word.length() && s.contains(word)) {
+                    return true;
+                }
+            }
+            return false;
+        }).collect(Collectors.toList());
     }
 }

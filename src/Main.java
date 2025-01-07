@@ -21,6 +21,7 @@ public class Main {
         solveFlattenTree();
         solveGroupAnagrams();
         solveMaxScore();
+        solveStringMatching();
     }
 
     static void solveFlattenTree() {
@@ -57,5 +58,10 @@ public class Main {
 
     static void solveMaxScore() {
         Utils.printAns(solution.maxScore("011101"));
+    }
+
+    static void solveStringMatching() {
+        String[] words = {"mass", "as", "hero", "superhero"};
+        Utils.printAns(solution.stringMatching(words));
     }
 }
