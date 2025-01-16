@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Queue;
 
 public class TreeConstructor {
-    public static enum Order { PREORDER, INORDER, POSTORDER, LEVEL_ORDER; }
+    public enum Order { PREORDER, INORDER, POSTORDER, LEVEL_ORDER; }
 
     /**
-     * Contructs the tree in the given order
+     * Constructs the tree in the given order
      * @param nums nodes in the tree
      * @param order order to constructs
      * @return returns the root
@@ -20,6 +20,7 @@ public class TreeConstructor {
         return constructPreorder(nums);
     }
 
+    // constructs the tree in bfs
     private  static TreeNode constructBfs(Integer[] nums) {
         TreeNode root = new TreeNode(nums[0]);
         Queue<TreeNode> q = new LinkedList<>();
@@ -39,21 +40,7 @@ public class TreeConstructor {
     }
 
     private static TreeNode constructPreorder(Integer[] nums) {
-        TreeNode[] nodes = new TreeNode[nums.length];
-        nodes[0] = new TreeNode(nums[0]);
-        for (int i = 0, n = nums.length; i * 2 + 1 < n; i++) {
-            if (nums[i] == null || nodes[i] == null) {
-                continue;
-            }
-            int first = i * 2 + 1;
-            nodes[first] = nums[first] != null ? new TreeNode(nums[first]) : null;
-            nodes[i].left = nodes[first];
-            if (++first < n) {
-                nodes[first] = nums[first] != null ? new TreeNode(nums[first]) : null;
-                nodes[i].right = nodes[first];
-            }
-        }
-        return nodes[0];
+        return null;
     }
 
     /**
@@ -72,17 +59,18 @@ public class TreeConstructor {
      * @param order order to collect the nodes
      */
     public static void addTreeNodes(TreeNode root, List<TreeNode> nodes, Order order) {
-        if (order == Order.PREORDER) {
-            preorder(root, nodes);
-        }
-        else if (order == Order.INORDER) {
-            inorder(root, nodes);
-        }
-        else if (order == Order.LEVEL_ORDER) {
-            bfs(root, nodes);
-        }
-        else {
-            postorder(root, nodes);
+        switch (order) {
+            case INORDER:
+                inorder(root, nodes);
+                break;
+            case PREORDER:
+                preorder(root, nodes);
+                break;
+            case POSTORDER:
+                postorder(root, nodes);
+                break;
+            default:
+                bfs(root, nodes);
         }
     }
 

@@ -1,9 +1,6 @@
 import common.problem.solving.util.TreeNode;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.PriorityQueue;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -68,8 +65,7 @@ public class Solution {
         while (k-- > 0) {
             int[] min = q.poll();
             if (min != null) {
-                min[0] *= multiplier;
-                nums[min[1]] *= multiplier;
+                nums[min[1]] = min[0] *= multiplier;
                 q.add(min);
             }
         }
@@ -83,7 +79,7 @@ public class Solution {
      */
      public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> index = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; ++i) {
             if (index.containsKey(target - nums[i])){
                 return new int[]{index.get(target - nums[i]), i};
             }
@@ -114,5 +110,103 @@ public class Solution {
          }
          root.left = null;
          return y == null ? x == null ? root : x : y;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/group-anagrams/">49. Group Anagrams</a>
+     */
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> result = new HashMap<>();
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String str1 = new String(chars);
+            List<String> ls = result.getOrDefault(str1, new ArrayList<>());
+            ls.add(str);
+            result.put(str1, ls);
+        }
+        return new ArrayList<>(result.values());
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/maximum-score-after-splitting-a-string/">
+     *  1422. Maximum Score After Splitting a String
+     * </a>
+     */
+    public int maxScore(String s) {
+        int ones = (int) s.chars().filter(c -> c == '1').count();
+        if (ones == 0) {
+            return s.length() - 1;
+        }
+
+        int zeroes = 0, score = 0;
+        for (int i = 0; i < s.length() - 1; ++i) {
+            if (s.charAt(i) == '1') {
+                --ones;
+            }
+            else {
+                ++zeroes;
+            }
+            score = Math.max(ones + zeroes, score);
+        }
+        return score;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/string-matching-in-an-array/">1408. String Matching in an Array</a>
+     */
+    public List<String> stringMatching(String[] words) {
+        return Arrays.stream(words).filter(word -> {
+            for (String s : words) {
+                if (s.length() != word.length() && s.contains(word)) {
+                    return true;
+                }
+            }
+            return false;
+        }).collect(Collectors.toList());
+    }
+
+    /**
+     *
+     */
+    public int countPrefixSuffixPairs(String[] words) {
+        int count = 0;
+        for (int i = 0; i < words.length; ++i) {
+            for (int j = i + 1; j < words.length; ++j) {
+                if (words[j].startsWith(words[i]) && words[j].endsWith(words[i])) {
+                    ++count;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/invert-binary-tree">226. Invert Binary Tree</a>
+     */
+    public TreeNode invertTree(TreeNode root) {
+        if (root != null) {
+            TreeNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+            invertTree(root.left);
+            invertTree(root.right);
+        }
+        return root;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/majority-element">169. Majority Element</a>
+     */
+    public int majorityElement(int[] nums) {
+        int canditate = 0;
+        int count = 0;
+        for (int num : nums) {
+            if (count == 0) {
+                canditate = num;
+            }
+            count += canditate == num ? 1 : -1;
+        }
+        return canditate;
     }
 }

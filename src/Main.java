@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to call solutions. Create a static method to run your solution.
+ * Entry point to test solutions. Add a static method to implement your solution
+ * and call it from main. Each method should be self-contained for modular testing.
  */
 public class Main {
     private static final Solution solution = new Solution();
@@ -18,6 +19,12 @@ public class Main {
         solveFindScore();
         solveTwoSum();
         solveFlattenTree();
+        solveGroupAnagrams();
+        solveMaxScore();
+        solveStringMatching();
+        solveCountPrefixSuffixPairs();
+        solveInvertTree();
+        solveMajorityElement();
     }
 
     static void solveFlattenTree() {
@@ -45,5 +52,38 @@ public class Main {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         Utils.printAns(solution.twoSum(nums, target));
+    }
+
+    static void solveGroupAnagrams() {
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        Utils.printAns(solution.groupAnagrams(strs));
+    }
+
+    static void solveMaxScore() {
+        Utils.printAns(solution.maxScore("011101"));
+    }
+
+    static void solveStringMatching() {
+        String[] words = {"mass", "as", "hero", "superhero"};
+        Utils.printAns(solution.stringMatching(words));
+    }
+
+    static void solveCountPrefixSuffixPairs() {
+        String[] words = {"a", "aba", "ababa", "aa"};
+        Utils.printAns(solution.countPrefixSuffixPairs(words));
+    }
+
+    static void solveInvertTree() {
+        Integer[] arr = {2, 1, null};//{4, 2, 7, 1, 3, 6, 9};
+        TreeNode root = TreeConstructor.construct(arr, TreeConstructor.Order.LEVEL_ORDER);
+        List<TreeNode> ans = new ArrayList<>();
+        solution.invertTree(root);
+        TreeConstructor.addTreeNodes(root, ans, TreeConstructor.Order.LEVEL_ORDER);
+        Utils.printAns(ans);
+    }
+
+    static void solveMajorityElement() {
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
+        Utils.printAns(solution.majorityElement(nums));
     }
 }

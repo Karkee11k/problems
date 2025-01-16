@@ -164,7 +164,7 @@ public class Utils {
     public static boolean[] readBooleanArray(String filename, String delimiter, boolean hasSurroundedBrackets) throws IOException {
         String[] inputs = readArray(filename, delimiter, hasSurroundedBrackets);
         boolean[] result = new boolean[inputs.length];
-        for (int i = 0; i < inputs.length; i++) {
+        for (int i = 0; i < inputs.length; ++i) {
             result[i] = Boolean.parseBoolean(inputs[i]);
         }
         return result;
