@@ -165,4 +165,48 @@ public class Solution {
             return false;
         }).collect(Collectors.toList());
     }
+
+    /**
+     *
+     */
+    public int countPrefixSuffixPairs(String[] words) {
+        int count = 0;
+        for (int i = 0; i < words.length; ++i) {
+            for (int j = i + 1; j < words.length; ++j) {
+                if (words[j].startsWith(words[i]) && words[j].endsWith(words[i])) {
+                    ++count;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/invert-binary-tree">226. Invert Binary Tree</a>
+     */
+    public TreeNode invertTree(TreeNode root) {
+        if (root != null) {
+            TreeNode temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+            invertTree(root.left);
+            invertTree(root.right);
+        }
+        return root;
+    }
+
+    /**
+     * <a href="https://leetcode.com/problems/majority-element">169. Majority Element</a>
+     */
+    public int majorityElement(int[] nums) {
+        int canditate = 0;
+        int count = 0;
+        for (int num : nums) {
+            if (count == 0) {
+                canditate = num;
+            }
+            count += canditate == num ? 1 : -1;
+        }
+        return canditate;
+    }
 }

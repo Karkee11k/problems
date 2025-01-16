@@ -22,6 +22,9 @@ public class Main {
         solveGroupAnagrams();
         solveMaxScore();
         solveStringMatching();
+        solveCountPrefixSuffixPairs();
+        solveInvertTree();
+        solveMajorityElement();
     }
 
     static void solveFlattenTree() {
@@ -63,5 +66,24 @@ public class Main {
     static void solveStringMatching() {
         String[] words = {"mass", "as", "hero", "superhero"};
         Utils.printAns(solution.stringMatching(words));
+    }
+
+    static void solveCountPrefixSuffixPairs() {
+        String[] words = {"a", "aba", "ababa", "aa"};
+        Utils.printAns(solution.countPrefixSuffixPairs(words));
+    }
+
+    static void solveInvertTree() {
+        Integer[] arr = {2, 1, null};//{4, 2, 7, 1, 3, 6, 9};
+        TreeNode root = TreeConstructor.construct(arr, TreeConstructor.Order.LEVEL_ORDER);
+        List<TreeNode> ans = new ArrayList<>();
+        solution.invertTree(root);
+        TreeConstructor.addTreeNodes(root, ans, TreeConstructor.Order.LEVEL_ORDER);
+        Utils.printAns(ans);
+    }
+
+    static void solveMajorityElement() {
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
+        Utils.printAns(solution.majorityElement(nums));
     }
 }
