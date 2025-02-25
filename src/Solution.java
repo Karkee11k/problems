@@ -214,15 +214,15 @@ public class Solution {
      * <a href="https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/">1524. Number of Sub-arrays With Odd Sum</a>
      */
     public int numOfSubarrays(int[] arr) {
-        int n = arr.length, odds = 0, sum = 0;
+        int odds = 0, sum = 0;
         for (int num : arr) {
             sum += num;
             odds += sum % 2;
         }
 
-        int ans = odds;
-        for (int i = 1; i < arr.length; i++) {
-            odds = arr[i - 1] % 2 == 0 ? odds : n - odds;
+        int ans = odds, n = arr.length;
+        for (int num : arr) {
+            odds = num % 2 == 0 ? odds : n - odds;
             ans += odds % 1_000_000_007;
             n--;
         }
