@@ -25,6 +25,7 @@ public class Main {
         solveCountPrefixSuffixPairs();
         solveInvertTree();
         solveMajorityElement();
+        solveNumOfSubarrays();
     }
 
     static void solveFlattenTree() {
@@ -85,5 +86,10 @@ public class Main {
     static void solveMajorityElement() {
         int[] nums = {2, 2, 1, 1, 1, 2, 2};
         Utils.printAns(solution.majorityElement(nums));
+    }
+
+    static void solveNumOfSubarrays() {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        Utils.printAns(solution.numOfSubarrays(nums));
     }
 }
