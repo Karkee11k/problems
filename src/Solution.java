@@ -223,7 +223,7 @@ public class Solution {
         int ans = odds, n = arr.length;
         for (int num : arr) {
             odds = num % 2 == 0 ? odds : n - odds;
-            ans += odds % 1_000_000_007;
+            ans = (ans + odds) % 1_000_000_007;
             n--;
         }
         return ans;
