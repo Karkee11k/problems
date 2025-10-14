@@ -229,4 +229,23 @@ public class Solution {
         return ans;
     }
 
+    public boolean hasIncreasingSubarrays(List<Integer> nums, int k) {
+        var subarrayLength = 0;
+        var prev = nums.get(0);
+        var subarraysFound = new HashSet<Integer>();
+        
+        for (int i = 0; i < nums.size(); ++i) {
+            subarrayLength = prev < nums.get(i) ? subarrayLength + 1 : 1;
+            prev = nums.get(i);
+            if (subarrayLength == k) {
+                var subarrayStart = i - subarrayLength + 1;
+                if (subarraysFound.contains(subarrayStart - k)) {
+                    return true;
+                }
+                subarraysFound.add(subarrayStart);
+                subarrayLength--;    // reduce length by 1 to include overlaps in the next window
+            }
+        }
+        return false;
+    }
 }

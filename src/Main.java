@@ -15,17 +15,18 @@ public class Main {
 
     // main function, here you can try solutions
     public static void main(String[] args) throws Exception {
-        solveGetFinalState();
-        solveFindScore();
-        solveTwoSum();
-        solveFlattenTree();
-        solveGroupAnagrams();
-        solveMaxScore();
-        solveStringMatching();
-        solveCountPrefixSuffixPairs();
-        solveInvertTree();
-        solveMajorityElement();
-        solveNumOfSubarrays();
+        // solveGetFinalState();
+        // solveFindScore();
+        // solveTwoSum();
+        // solveFlattenTree();
+        // solveGroupAnagrams();
+        // solveMaxScore();
+        // solveStringMatching();
+        // solveCountPrefixSuffixPairs();
+        // solveInvertTree();
+        // solveMajorityElement();
+        // solveNumOfSubarrays();
+        solveHasIncreasingSubarrays();
     }
 
     static void solveFlattenTree() {
@@ -91,5 +92,18 @@ public class Main {
     static void solveNumOfSubarrays() {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
         Utils.printAns(solution.numOfSubarrays(nums));
+    }
+    
+    static void solveHasIncreasingSubarrays() {
+        var nums = List.of(2, 5, 7, 8, 9, 2, 3, 4, 3, 1);
+        int k = 3;
+        var nums2 = List.of(1, 2, 3, 4, 4, 4, 4, 5, 6, 7);
+        var k2 = 5;
+        var nums3 = List.of(-15, 19);
+        var k3 = 1;
+        Utils.printAns(solution.hasIncreasingSubarrays(nums, k));
+        Utils.printAns(solution.hasIncreasingSubarrays(nums2, k2));
+        Utils.printAns(solution.hasIncreasingSubarrays(nums3, k3));
+        
     }
 }
