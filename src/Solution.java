@@ -1,6 +1,8 @@
+import static common.problem.solving.util.ListCreator.Node;
 import common.problem.solving.util.TreeNode;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -247,5 +249,49 @@ public class Solution {
             }
         }
         return false;
+    }
+    
+    
+    public int hIndex(int[] citations) {
+        int[] counts = countingSort(citations, 1000);
+        int hIndex = 0;
+        
+        for (int i = 1; i < counts.length; i++) {
+            if (i > counts[i]) {
+                break;
+            }
+            hIndex = i;
+        }
+        return hIndex;
+    }
+    
+    int[] countingSort(int[] a, int count) {
+        int[] counts = new int[count + 1];
+        for (int i : a) {
+            counts[i]++;
+        }
+        for (int i = count; i > 0; --i) {
+            counts[i - 1] += counts[i];
+        }
+        return counts;
+    }
+    
+    
+    public Node copyRandomList(Node head) {
+        Map<Node, Node> map = new HashMap<>();
+        forEach(head, node -> map.put(node, new Node(node.value)));
+        forEach(head, node -> {
+            Node newNode = map.get(node);
+            newNode.next = map.get(node.next);
+            newNode.random = map.get(node.random);
+        });
+        return map.get(head);
+    }
+    
+    public static void forEach(Node head, Consumer<Node> action) {
+        while (head != null) {
+            action.accept(head);
+            head = head.next;
+        }
     }
 }

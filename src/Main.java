@@ -1,6 +1,8 @@
+import common.problem.solving.util.ListCreator;
 import common.problem.solving.util.TreeConstructor;
 import common.problem.solving.util.TreeNode;
 import common.problem.solving.util.Utils;
+import jdk.jshell.execution.Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +28,10 @@ public class Main {
         // solveInvertTree();
         // solveMajorityElement();
         // solveNumOfSubarrays();
-        solveHasIncreasingSubarrays();
+        // solveHasIncreasingSubarrays();
+//        solveCopyRandomList();
+        solveHIndex();
+        
     }
 
     static void solveFlattenTree() {
@@ -105,5 +110,19 @@ public class Main {
         Utils.printAns(solution.hasIncreasingSubarrays(nums2, k2));
         Utils.printAns(solution.hasIncreasingSubarrays(nums3, k3));
         
+    }
+    
+    static void solveCopyRandomList() {
+        Integer[][] input = {{7, null}, {13, 0}, {11, 4}, {10, 2}, {1, 0}};
+        ListCreator.Node head = ListCreator.createRandomPointerList(input);
+        ListCreator.printList(head);
+        ListCreator.printList(solution.copyRandomList(head));
+    }
+    
+    static void solveHIndex() {
+        int[] citations = {3, 0, 6, 1, 5};
+        int[] citations1 = {1, 3, 1};
+        int[] citations2 = {0,2,1000};
+        Utils.printAns(solution.hIndex(citations2));
     }
 }
